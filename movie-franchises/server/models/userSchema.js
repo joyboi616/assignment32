@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  work: {
+  job: {
     type: String,
     required: true
   }

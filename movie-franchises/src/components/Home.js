@@ -130,7 +130,7 @@ const Home = () => {
                 <td>3138470323</td>
                 <td>Web Developer</td>
                 <td className="d-flex justify-content-between">
-                  <NavLink to="/edit" className='btn btn-primary'><CreateIcon /></NavLink>
+                  <NavLink to="/edit/1" className='btn btn-primary'><CreateIcon /></NavLink>
                   <button className="btn btn-danger" onClick={deleteuser}><DeleteOutlineSharpIcon /></button>
                 </td>
               </tr>
