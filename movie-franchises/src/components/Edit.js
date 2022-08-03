@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { NavLink, useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
   import { updatedata } from './context/ContextProvider'
 
 const Edit = () => {
@@ -88,7 +88,6 @@ const Edit = () => {
 
   return (
     <div className="container">
-      <NavLink to="/">Home 2</NavLink>
       <form className="mt-4">
         <div className="row">
           <div className="mb-3 col-lg-6 col-mb-6 col-12">

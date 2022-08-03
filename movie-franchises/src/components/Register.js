@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { adddata } from './context/ContextProvider';
 
 const Register = () => {
 
-  const { udata, setUdata } = useContext(adddata);
+  const { setUdata } = useContext(adddata);
 
   const history = useNavigate();
 
@@ -60,8 +60,8 @@ const Register = () => {
 
   return (
     <div className="container">
-      <NavLink to="/">Home</NavLink>
-      <form className="mt-4">
+      {/* <NavLink to="/">Home</NavLink> */}
+      <form className="mt-4"> 
         <div className="row">
           <div className="mb-3 col-lg-6 col-mb-6 col-12">
             <label htmlFor="exampleInputEmail1" className="form-label">Name</label>

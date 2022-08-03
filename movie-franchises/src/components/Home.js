@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+/* import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye'; */
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteOutlineSharpIcon from '@mui/icons-material/DeleteOutlineSharp';
 import { NavLink } from 'react-router-dom';
@@ -10,14 +10,14 @@ const Home = () => {
   const [getuserdata, setUserdata] = useState([]);
   /* console.log(getuserdata); */
 
-  const { udata, setUdata } = useContext(adddata);
+  const { udata } = useContext(adddata);
 
-  const { updata, setUPdata } = useContext(updatedata)
+  const { updata } = useContext(updatedata)
 
   const { dltdata, setDLTdata } = useContext(deldata);
 
   const getdata = async (e) => {
-    e.preventDefault();
+    /* e.preventDefault(); */
 
     const res = await fetch("/getdata", {
       method: "GET",
@@ -72,18 +72,18 @@ const Home = () => {
       {
         udata ?
           <>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div className="alert alert-success alert-dismissible fade show" role="alert">
               <strong>{udata.name}</strong>  Added succesfully!
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           </> : ""
       }
       {
         updata ?
           <>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div className="alert alert-success alert-dismissible fade show" role="alert">
               <strong>{updata.name}</strong>  Updated succesfully!
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           </> : ""
       }
@@ -91,16 +91,16 @@ const Home = () => {
       {
         dltdata ?
           <>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div className="alert alert-danger alert-dismissible fade show" role="alert">
               <strong>{dltdata.name}</strong>  Deleted succesfully!
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           </> : ""
       }
 
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <div className="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success!</strong> User added successfully.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 
       <div className="mt-5">
@@ -130,8 +130,19 @@ const Home = () => {
                 <td>3138470323</td>
                 <td>Web Developer</td>
                 <td className="d-flex justify-content-between">
-                  <button className="btn btn-success"><RemoveRedEyeIcon /></button>
-                  <button className="btn btn-primary"><CreateIcon /></button>
+                  <NavLink to="/edit" className='btn btn-primary'><CreateIcon /></NavLink>
+                  <button className="btn btn-danger" onClick={deleteuser}><DeleteOutlineSharpIcon /></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>pulido</td>
+                <td>pulido@gmail.com</td>
+                <td>22</td>
+                <td>3138470323</td>
+                <td>Web Developer</td>
+                <td className="d-flex justify-content-between">
+                <NavLink to="/edit/2" className='btn btn-primary'><CreateIcon /></NavLink>
                   <button className="btn btn-danger" onClick={deleteuser}><DeleteOutlineSharpIcon /></button>
                 </td>
               </tr>
@@ -147,7 +158,6 @@ const Home = () => {
                         <td>{element.phone}</td>
                         <td>{element.job}</td>
                         <td className="d-flex justify-content-between">
-                          <NavLink to={`view/${element._id}`}><button className="btn btn-success"><RemoveRedEyeIcon /></button></NavLink>
                           <NavLink to={`edit/${element._id}`}><button className="btn btn-primary"><CreateIcon /></button></NavLink>
                           <button className="btn btn-danger" onClick={() => deleteuser(element._id)}><DeleteOutlineSharpIcon /></button>
                         </td>
@@ -156,31 +166,6 @@ const Home = () => {
                   )
                 })
               }
-
-
-              {/* <tr>
-              <th scope="row">1</th>
-              <td>meet</td>
-              <td>meet@gmail.com</td>
-              <td>@Webdeveloper</td>
-              <td>9191919191919</td>
-              <td className="d-flex justify-content-between">
-                <button className="btn btn-success"><RemoveRedEyeIcon /></button>
-                <button className="btn btn-primary"><CreateIcon /></button>
-                <button className="btn btn-danger"><DeleteOutlineSharpIcon /></button>
-              </td>
-            </tr> */}
-              {/* <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr> */}
             </tbody>
           </table>
 
