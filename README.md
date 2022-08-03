@@ -20,3 +20,10 @@ The database:
 <p>
 ![2022-08-03 (3)](https://user-images.githubusercontent.com/73078734/182676584-bb766c8f-b03a-45fd-8a7f-05ecbb39f269.png)
 </p>
+
+<p>
+Create Page:
+</p>
+<p>
+![2022-08-03 (4)](https://user-images.githubusercontent.com/73078734/182681330-aa6069fe-733e-40ea-b0ab-a790ec9a1a8b.png)
+</p>
