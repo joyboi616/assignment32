@@ -2,17 +2,14 @@ const express = require("express");
 const router = express.Router();
 const users = require("../models/userSchema");
 
-// router.get("/",(req,res)=>{
-//     console.log("connect");
-// });
 
-// register user
+/* Register user */
 
 router.post("/register", async (req, res) => {
   /* console.log(req.body); */
-  const { name, email, age, mobile, work } = req.body;
+  const { name, email, age, mobile, job } = req.body;
 
-  if (!name || !email || !age || !mobile || !work) {
+  if (!name || !email || !age || !mobile || !job) {
     res.status(422).json("Please fill all the data");
   }
 
@@ -25,7 +22,7 @@ router.post("/register", async (req, res) => {
       res.status(422).json("This is user is already present");
     } else {
       const adduser = new users({
-        name, email, age, mobile, work
+        name, email, age, mobile, job
       });
 
       await adduser.save();
@@ -39,7 +36,7 @@ router.post("/register", async (req, res) => {
 })
 
 
-/* // get userdata
+/* Get userdata */
 
 router.get("/getdata", async (req, res) => {
   try {
@@ -51,7 +48,8 @@ router.get("/getdata", async (req, res) => {
   }
 })
 
-// get individual user
+
+/* Get individual user */
 
 router.get("/getuser/:id", async (req, res) => {
   try {
@@ -68,7 +66,7 @@ router.get("/getuser/:id", async (req, res) => {
 })
 
 
-// update user data
+/* Update user data */
 
 router.patch("/updateuser/:id", async (req, res) => {
   try {
@@ -87,7 +85,8 @@ router.patch("/updateuser/:id", async (req, res) => {
 })
 
 
-// delete user
+/* Delete user */
+
 router.delete("/deleteuser/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -99,6 +98,6 @@ router.delete("/deleteuser/:id", async (req, res) => {
   } catch (error) {
     res.status(422).json(error);
   }
-}) */
+})
 
 module.exports = router;

@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { adddata } from './context/ContextProvider';
 
 const Register = () => {
+
+  const { udata, setUdata } = useContext(adddata);
+
+  const history = useNavigate();
 
   const [inpval, setINP] = useState({
     name: "",
     email: "",
     age: "",
     mobile: "",
-    work: ""
+    job: ""
   })
 
   const setdata = (e) => {
@@ -25,7 +30,7 @@ const Register = () => {
   const addinpdata = async (e) => {
     e.preventDefault();
 
-    const { name, email, age, mobile, work } = inpval;
+    const { name, email, age, mobile, job } = inpval;
 
     const res = await fetch("/register", {
       method: "POST",
@@ -33,7 +38,7 @@ const Register = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name, email, age, mobile, work
+        name, email, age, mobile, job
       })
     });
 
@@ -46,9 +51,9 @@ const Register = () => {
 
     } else {
       alert("data added");
-      /* history.push("/") */
-      /* setUdata(data) */
-      console.log("data added");
+      history.push("/")
+      setUdata(data)
+      console.log("Data added");
 
     }
   }
@@ -76,8 +81,8 @@ const Register = () => {
             <input type="number" value={inpval.mobile} onChange={setdata} name="mobile" className="form-control" id="exampleInputPassword1" />
           </div>
           <div className="mb-3 col-lg-6 col-mb-6 col-12">
-            <label htmlFor="exampleInputPassword1" className="form-label">Work</label>
-            <input type="text" value={inpval.work} onChange={setdata} name="work" className="form-control" id="exampleInputPassword1" />
+            <label htmlFor="exampleInputPassword1" className="form-label">Job</label>
+            <input type="text" value={inpval.job} onChange={setdata} name="job" className="form-control" id="exampleInputPassword1" />
           </div>
           <button type="submit" onClick={addinpdata} className="btn btn-primary">Submit</button>
         </div>
